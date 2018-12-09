@@ -14,7 +14,7 @@ func setGPIO(){
 
 
 func switchLED(ledGPIO: GPIO){
-	print(ledGPIO)
+
 	ledGPIO.direction = .OUT
 	while (true) {
 		sleep(1)
