@@ -9,7 +9,7 @@ func setGPIO(){
         	fatalError("It has not been possible to initialised the LED GPIO pin")
 	}
 	print("Setting GPIOs")
-	switchLED(ledGPIO: ledvGPIO)
+	switchLED(ledGPIO: ledGPIO)
 }
 
 
