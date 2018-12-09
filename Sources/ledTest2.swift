@@ -8,13 +8,16 @@ func setGPIO(){
 	guard let ledGPIO = gpios[.P7] else {
         	fatalError("It has not been possible to initialised the LED GPIO pin")
 	}
-	switchLED(ledGPIO: ledGPIO)
+	print("Setting GPIOs")
+	switchLED(ledGPIO: ledvGPIO)
 }
 
 
 func switchLED(ledGPIO: GPIO){
+	
 	ledGPIO.direction = .OUT
 	while (true) {
+		print("Switching signal")
 		sleep(1)
 		ledGPIO.value = 1
 		sleep(0)
