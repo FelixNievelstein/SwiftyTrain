@@ -14,13 +14,14 @@ func setGPIO(){
 
 
 func switchLED(ledGPIO: GPIO){
-	
+	print(ledGPIO)
 	ledGPIO.direction = .OUT
 	while (true) {
-		print("Switching signal")
 		sleep(1)
+		print("Switching signal ON")
 		ledGPIO.value = 1
-		sleep(0)
+		sleep(1)
+		print("Switching signal OFF")
 		ledGPIO.value = 0
 	}
 }
