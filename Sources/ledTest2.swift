@@ -21,5 +21,3 @@ func switchLED(ledGPIO: GPIO){
 		ledGPIO.value = 0
 	}
 }
-
-setGPIO()
