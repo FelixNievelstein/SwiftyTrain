@@ -1,4 +1,3 @@
-import Glibc
 import Foundation
 import SwiftyGPIO
 
@@ -6,7 +5,7 @@ import SwiftyGPIO
 func setGPIO(){
 	let gpios = SwiftyGPIO.GPIOs(for: .RaspberryPiPlusZero)
 	guard let ledGPIO = gpios[.P14] else {
-        	fatalError("It has not been possible to initialised the LED GPIO pin")
+        	fatalError("It has not been possible to initialised the LED GPIO pin")		
 	}
 	print("Setting GPIOs")
 	switchLED(ledGPIO: ledGPIO)

@@ -1,7 +1,9 @@
 import Foundation
 
 
-start(){
+func start(){
     let bluetoothController = STBluetoothController();
     setGPIO()
 }
+
+start()
