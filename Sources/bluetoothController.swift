@@ -8,7 +8,7 @@ class STBluetoothController {
             return;
         }
         do{
-            let socket =  try L2CAPSocket.init(hostController.address, protocolServiceMultiplexer: 0, channelIdentifier: ATT.CID, addressType: .lowEnergyPublic, securityLevel: .low)
+            let socket =  try L2CAPSocket.init(controllerAddress: hostController.address, protocolServiceMultiplexer: 0, channelIdentifier: ATT.CID, addressType: .lowEnergyPublic, securityLevel: .low)
         }
         catch {
             print("Error creating socket.")
