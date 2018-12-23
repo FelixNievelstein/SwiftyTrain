@@ -8,7 +8,8 @@ class STBluetoothController {
             return;
         }
         do{
-            let socket =  try L2CAPSocket.init(controllerAddress: hostController.address, protocolServiceMultiplexer: 0, channelIdentifier: ATT.CID, addressType: .lowEnergyPublic, securityLevel: .low)
+            hostController.enableLowEnergyAdvertising(_ isEnabled: true, timeout: HCICommandTimeout = .default)
+            //hostController.setPeriodicAdvertisingEnable(enable: HCILESetPeriodicAdvertisingEnable.Enable, advertisingHandle: UInt8, timeout: .default)
         }
         catch {
             print("Error creating socket.")
