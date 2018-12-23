@@ -8,11 +8,11 @@ class STBluetoothController {
             return;
         }
         do{
-            hostController.enableLowEnergyAdvertising(_ isEnabled: true, timeout: HCICommandTimeout = .default)
+            try hostController.enableLowEnergyAdvertising(true, timeout: .default)
             //hostController.setPeriodicAdvertisingEnable(enable: HCILESetPeriodicAdvertisingEnable.Enable, advertisingHandle: UInt8, timeout: .default)
         }
         catch {
-            print("Error creating socket.")
+            print("Error enabling advertising.")
         }
         
         print("Bluetooth ready")
