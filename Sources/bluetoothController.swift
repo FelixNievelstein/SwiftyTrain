@@ -13,6 +13,7 @@ class STBluetoothController {
         }
         catch {
             print("Error enabling advertising.")
+            print("Unexpected error: \(error).")            
         }
         
         print("Bluetooth ready")
