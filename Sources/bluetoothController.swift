@@ -7,6 +7,13 @@ class STBluetoothController {
             print("No bluetooth adapter found.")
             return;
         }
+        do{
+            let socket =  try L2CAPSocket.init(hostController.address, protocolServiceMultiplexer: 0, channelIdentifier: ATT.CID, addressType: .lowEnergyPublic, securityLevel: .low)
+        }
+        catch {
+            print("Error creating socket.")
+        }
+        
         print("Bluetooth ready")
     }
 }
