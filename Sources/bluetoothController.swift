@@ -7,19 +7,24 @@ class STBluetoothController {
             print("No bluetooth adapter found.")
             return;
         }
-        do{
+        do{                       
+            // stop advertising
+            do { try hostController.enableLowEnergyAdvertising(false, timeout: .default) }
+            catch HCIError.commandDisallowed { /* ignore, means already turned on */ }
+            
+            // set advertising parameters                                
             let parameters = HCILESetAdvertisingParameters.init(interval: (min: AdvertisingInterval.init(rawValue: 100)!, max: AdvertisingInterval.init(rawValue: 5000)!), 
                                 advertisingType: .directed, 
                                 ownAddressType: .public, 
                                 directAddresssType: .public, 
                                 directAddress: .zero,
                                 channelMap: .all,
-                                filterPolicy: .any)             
-
-            try hostController.setLowEnergyAdvertisingParameters(parameters,
-                                       timeout: .default)
-            try hostController.enableLowEnergyAdvertising(true, timeout: .default)
-
+                                filterPolicy: .any)  
+            try hostController.deviceRequest(parameters, timeout: .default)
+            
+            // start advertising
+            do { try hostController.enableLowEnergyAdvertising(timeout: .default) }
+            catch HCIError.commandDisallowed { /* ignore, means already turned on */ }
             //hostController.setPeriodicAdvertisingEnable(enable: HCILESetPeriodicAdvertisingEnable.Enable, advertisingHandle: UInt8, timeout: .default)
         }
         catch {
