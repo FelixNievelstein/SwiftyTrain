@@ -9,9 +9,11 @@ class STBluetoothController {
         }
         do{                       
             // stop advertising
+            print("stop advertising")
             do { try hostController.enableLowEnergyAdvertising(false, timeout: .default) }
             catch HCIError.commandDisallowed { /* ignore, means already turned on */ }
             
+            print("set parameters")
             // set advertising parameters                                
             let parameters = HCILESetAdvertisingParameters.init(interval: (min: AdvertisingInterval.init(rawValue: 100)!, max: AdvertisingInterval.init(rawValue: 5000)!), 
                                 advertisingType: .directed, 
@@ -22,6 +24,7 @@ class STBluetoothController {
                                 filterPolicy: .any)  
             try hostController.deviceRequest(parameters, timeout: .default)
             
+            print("start advertising")
             // start advertising
             do { try hostController.enableLowEnergyAdvertising(timeout: .default) }
             catch HCIError.commandDisallowed { /* ignore, means already turned on */ }
