@@ -9,14 +9,6 @@ class STBluetoothController {
             return;
         }
         do{       
-
-            
-            let iBeaconUUID = Foundation.UUID(rawValue: "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0")!
-            do { try hostController.iBeacon(AppleBeacon(uuid: iBeaconUUID, major: 1, minor: 1, rssi: -29), flags: .lowEnergyGeneralDiscoverableMode,
-                 interval: .default,
-                 timeout: .default) 
-            }
-            catch { print("Error enabling iBeacon: \(error)") }                
             // stop advertising
             print("stop advertising")
             do { try hostController.enableLowEnergyAdvertising(false, timeout: .default) }
